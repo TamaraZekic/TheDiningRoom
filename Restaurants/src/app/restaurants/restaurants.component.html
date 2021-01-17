@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-6">
+        <app-pagination [totalItems]="restaurantList?.count" [pageSize]="parameters.pageSize" (emiterChangePage)="getRestaurants($event)"></app-pagination>
+    </div>
+    
+    <div class="col-6">
+        <label>Price range: </label>
+        <input type="number" [(ngModel)]="parameters.filter.priceFrom" (ngModelChange)="getRestaurants({page:1})">
+        <input type="number" [(ngModel)]="parameters.filter.priceTo" (ngModelChange)="getRestaurants({page:1})">
+    
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-4" *ngFor="let rest of restaurantList?.results">
+        <app-item [restaurant]="rest"></app-item>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="container-fluid" width="100px">
+    <div class="row">
+        <div class="col">
+            <h1 width="100%">{{restaurant.name}}</h1>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-8">
+            <p><b><u>Working hours</u></b></p>
+            <ul>
+                <div *ngFor="let weekday of weekdays; let i = index">
+                    <li *ngIf="restaurant?.days[i+1]">
+                        {{weekday}}: {{restaurant?.days[i+1].opens}} - {{restaurant?.days[i+1].closes}}
+                    </li>
+                </div>
+            </ul>
+
+        </div>
+        <div class="col-4">
+            <p><b><u>Address</u></b></p>
+            <ol>
+                <li>{{restaurant.location}}</li>
+            </ol>
+        </div>
+    </div>
+
+    <table width="100%">
+        <tr>
+            <th width="50%"><b>Name</b></th>
+            <th width="50%"><b>Price</b></th>
+        </tr>
+
+        <tr *ngFor="let item of menu?.items">
+            <td class="col-6">{{item.name}}</td>
+            <td class="col-6">{{item.price}}</td>
+        </tr>
+    </table>
+</div>
